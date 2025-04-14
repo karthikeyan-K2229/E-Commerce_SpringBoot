@@ -3,4 +3,9 @@ spring:
     import: optional:configserver:http://localhost:8888
   application:
     name: customer-service
+  zipkin:
+    enabled: false
+  sleuth:
+    enabled: false
+
 

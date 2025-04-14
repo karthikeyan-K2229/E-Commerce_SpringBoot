@@ -21,14 +21,14 @@ public class CustomerController {
 
   private final CustomerService service;
 
-  @PostMapping
+  @PostMapping("/createCustomer")
   public ResponseEntity<String> createCustomer(
       @RequestBody @Valid CustomerRequest request
   ) {
     return ResponseEntity.ok(this.service.createCustomer(request));
   }
 
-  @PutMapping
+  @PutMapping("/UpdateCustomer")
   public ResponseEntity<Void> updateCustomer(
       @RequestBody @Valid CustomerRequest request
   ) {
