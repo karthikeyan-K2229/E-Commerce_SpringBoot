@@ -3,6 +3,7 @@ package com.java.product.product;
 import com.java.product.exception.ProductPurchaseException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +15,10 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ProductService {
-    private final ProductRepository productRepository;
-    private final ProductMapper mapper;
+    @Autowired
+    private  ProductRepository productRepository;
+    @Autowired
+    private  ProductMapper mapper;
     public Integer createProduct(ProductRequest request) {
         var product=mapper.toProduct(request);
         return productRepository.save(product).getId();

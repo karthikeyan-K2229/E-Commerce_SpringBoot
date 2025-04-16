@@ -2,20 +2,27 @@ package com.java.product.product;
 
 import com.java.product.category.Category;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 @Component
 public class ProductMapper {
     public Product toProduct(ProductRequest request) {
-        return Product.builder().
-                id(request.id())
-                .name(request.name()).
-                description(request.description())
+        return new Product.Builder()
+                .id(request.id())
+                .name(request.name())
+                .description(request.description())
                 .availableQuantity(request.availableQuantity())
                 .price(request.price())
-                .category(Category.builder().id(request.categoryId()).build()).build();
+                .category(
+                        new Category.Builder()
+                                .id(request.categoryId())
+                                .build()
+                )
+                .build();
     }
 
-    public  ProductResponse toProductresponse(Product product) {
+    public ProductResponse toProductresponse(Product product) {
         return new ProductResponse(
                 product.getId(),
                 product.getName(),
